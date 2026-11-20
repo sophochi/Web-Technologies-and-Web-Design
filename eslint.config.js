@@ -1,4 +1,3 @@
-
 export default [
     {
         ignores: [
@@ -7,15 +6,37 @@ export default [
             "site/**"
         ]
     },
+
     {
-        files: ["**/*.js", "**/*.mjs"],
+        files: [
+            "**/*.js",
+            "**/*.mjs"
+        ],
+
         languageOptions: {
             ecmaVersion: "latest",
-            sourceType: "module"
+            sourceType: "module",
+            globals: {
+                console: "readonly",
+                document: "readonly",
+                window: "readonly",
+                localStorage: "readonly",
+                fetch: "readonly",
+                URL: "readonly"
+            }
         },
+
         rules: {
-            "no-unused-vars": "error",
-            "no-undef": "error"
+            "no-unused-vars": [
+                "error",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_"
+                }
+            ],
+
+            "no-undef": "error",
+            "no-console": "off"
         }
     }
 ];
