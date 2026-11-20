@@ -1,0 +1,83 @@
+<%- include('../partials/head.ejs', {
+    title: 'Startup jobs — JOBLY',
+    description: 'Browse curated startup roles and filter by role, location and work format.'
+}) %>
+<%- include('../partials/header.ejs') %>
+
+<main class="jobs-page">
+    <section class="jobs-hero" aria-labelledby="jobs-title">
+        <div class="jobs-hero__content">
+            <p class="jobs-hero__eyebrow" data-i18n="jobs.hero.eyebrow">Startup jobs</p>
+            <h1 id="jobs-title" data-i18n="jobs.hero.title">Startup jobs</h1>
+            <p data-i18n="jobs.hero.text">Hand-picked roles from small, ambitious tech teams.</p>
+
+            <form class="job-search" action="./jobs.html" method="get" role="search">
+                <div class="job-search__field">
+                    <label for="jobs-role" data-i18n="search.roleLabel">Search by role or company</label>
+                    <input id="jobs-role" name="query" type="search" placeholder="Search by role or company" data-i18n-placeholder="search.jobsPlaceholder">
+                </div>
+                <div class="job-search__field">
+                    <label for="jobs-location" data-i18n="search.locationLabel">Location</label>
+                    <input id="jobs-location" name="location" type="search" placeholder="Location" data-i18n-placeholder="search.locationPlaceholder">
+                </div>
+                <button type="submit" data-i18n="actions.search">Search</button>
+            </form>
+        </div>
+
+        <picture class="jobs-hero__media">
+            <source
+                type="image/webp"
+                srcset="./assets/images/jobs-hero-240.webp 240w, ./assets/images/jobs-hero-480.webp 480w"
+                sizes="(max-width: 767px) 100vw, 360px">
+            <img
+                src="./assets/images/jobs-hero-480.jpg"
+                srcset="./assets/images/jobs-hero-240.jpg 240w, ./assets/images/jobs-hero-480.jpg 480w"
+                sizes="(max-width: 767px) 100vw, 360px"
+                width="480"
+                height="320"
+                alt="Candidate holding a résumé during a job interview"
+                decoding="async">
+        </picture>
+    </section>
+
+    <section class="jobs-results" aria-labelledby="results-title">
+        <form class="filters" action="./jobs.html" method="get">
+            <fieldset>
+                <legend data-i18n="jobs.filters.legend">Filter</legend>
+                <label><input type="checkbox" name="workMode" value="remote"> <span data-i18n="filters.remote">Remote</span></label>
+                <label><input type="checkbox" name="category" value="design"> <span data-i18n="filters.design">Design</span></label>
+                <label><input type="checkbox" name="category" value="engineering"> <span data-i18n="filters.engineering">Engineering</span></label>
+                <label><input type="checkbox" name="level" value="junior"> <span data-i18n="filters.juniorFriendly">Junior friendly</span></label>
+                <label><input type="checkbox" name="sort" value="newest"> <span data-i18n="filters.newest">Newest</span></label>
+            </fieldset>
+
+            <div id="company-filter" class="filters__company">
+                <label for="company" data-i18n="filters.company">Company</label>
+                <select id="company" name="company">
+                    <option value="">All companies</option>
+                    <option value="nosand-nogames">NoSanD NoGames</option>
+                    <option value="rozetka">Rozetka</option>
+                    <option value="ruslan-baginskiy">Ruslan Baginskiy</option>
+                </select>
+            </div>
+
+            <button type="submit" data-i18n="actions.applyFilters">Apply filters</button>
+        </form>
+
+        <header class="jobs-results__header">
+            <h2 id="results-title" data-i18n="jobs.results.title">128 roles this week</h2>
+            <p data-i18n="jobs.results.text">Curated startup roles with clear filters and quick role previews.</p>
+            <p><time datetime="2026-11-20" data-i18n="jobs.results.updated">Updated today</time></p>
+        </header>
+
+        <ul id="job-list" class="jobs-results__list">
+            <% jobs.forEach((job) => { %>
+                <li class="jobs-results__item">
+                    <%- include('../partials/job-card.ejs', { job }) %>
+                </li>
+            <% }); %>
+        </ul>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

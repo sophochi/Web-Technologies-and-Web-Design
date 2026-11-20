@@ -1,0 +1,74 @@
+<%- include('../partials/head.ejs', {
+    title: 'JOBLY — Startup jobs for curious humans',
+    description: 'Find startup jobs in design, engineering and product.'
+}) %>
+<%- include('../partials/header.ejs') %>
+
+<main class="home-page">
+    <section class="hero" aria-labelledby="home-title">
+        <div class="hero__content">
+            <p class="hero__eyebrow" data-i18n="home.hero.eyebrow">Curated startup roles</p>
+            <h1 id="home-title" class="hero__title" data-i18n="home.hero.title">Find work that feels right.</h1>
+            <p class="hero__text" data-i18n="home.hero.text">
+                Less corporate. More human. Discover roles at small tech teams doing interesting things.
+            </p>
+
+            <form class="job-search" action="./jobs.html" method="get" role="search">
+                <div class="job-search__field">
+                    <label for="home-role" data-i18n="search.roleLabel">Role or skill</label>
+                    <input id="home-role" name="role" type="search" placeholder="Role or skill" data-i18n-placeholder="search.rolePlaceholder">
+                </div>
+                <div class="job-search__field">
+                    <label for="home-location" data-i18n="search.locationLabel">Location</label>
+                    <input id="home-location" name="location" type="search" placeholder="Location" data-i18n-placeholder="search.locationPlaceholder">
+                </div>
+                <button class="job-search__submit" type="submit" data-i18n="actions.searchJobs">Search jobs</button>
+            </form>
+        </div>
+
+        <picture class="hero__media">
+            <source
+                type="image/webp"
+                srcset="./assets/images/home-hero-390.webp 390w, ./assets/images/home-hero-780.webp 780w"
+                sizes="(max-width: 767px) 100vw, 520px">
+            <img
+                src="./assets/images/home-hero-780.jpg"
+                srcset="./assets/images/home-hero-390.jpg 390w, ./assets/images/home-hero-780.jpg 780w"
+                sizes="(max-width: 767px) 100vw, 520px"
+                width="780"
+                height="520"
+                alt="Laptop beside a playful dog in a creative workspace"
+                decoding="async">
+        </picture>
+    </section>
+
+    <section class="featured-jobs" aria-labelledby="featured-title">
+        <p class="featured-jobs__eyebrow" data-i18n="home.featured.eyebrow">Featured this week</p>
+        <h2 id="featured-title" data-i18n="home.featured.title">Good jobs, no doomscrolling.</h2>
+        <ul class="featured-jobs__list">
+            <% jobs.forEach((job) => { %>
+                <li class="featured-jobs__item">
+                    <%- include('../partials/job-card.ejs', { job }) %>
+                </li>
+            <% }); %>
+        </ul>
+    </section>
+
+    <section class="role-browser" aria-labelledby="roles-title">
+        <p class="role-browser__eyebrow" data-i18n="home.roles.eyebrow">Explore</p>
+        <h2 id="roles-title" data-i18n="home.roles.title">Browse by role</h2>
+        <ul class="role-browser__list">
+            <li><a href="./jobs.html?role=design">Design <span>18 roles</span></a></li>
+            <li><a href="./jobs.html?role=product">Product <span>12 roles</span></a></li>
+        </ul>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+        <h2 id="about-title" data-i18n="home.about.title">About JOBLY</h2>
+        <p data-i18n="home.about.text">
+            JOBLY is a startup job board focused on clear role information, short paths to vacancies and a friendly application flow.
+        </p>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

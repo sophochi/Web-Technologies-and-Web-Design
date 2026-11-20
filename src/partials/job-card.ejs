@@ -1,0 +1,49 @@
+<article class="job-card job-card--<%= job.featured ? 'featured' : 'default' %>"
+         itemscope
+         itemtype="https://schema.org/JobPosting">
+    <meta itemprop="datePosted" content="<%= job.posted %>">
+    <meta itemprop="employmentType" content="FULL_TIME">
+
+    <header class="job-card__header">
+        <p class="job-card__company"
+           itemprop="hiringOrganization"
+           itemscope
+           itemtype="https://schema.org/Organization">
+            <span itemprop="name"><%= job.company %></span>
+        </p>
+        <% if (job.featured) { %>
+            <span class="job-card__badge" data-i18n="jobs.featured">Featured</span>
+        <% } %>
+        <h3 class="job-card__title" itemprop="title"><%= job.title %></h3>
+    </header>
+
+    <p class="job-card__meta">
+        <span itemprop="jobLocationType"><%= job.workMode %></span>
+        · <span><%= job.employmentType %></span>
+    </p>
+
+    <p class="job-card__location"><%= job.location %></p>
+
+    <p class="job-card__salary"
+       itemprop="baseSalary"
+       itemscope
+       itemtype="https://schema.org/MonetaryAmount">
+        <meta itemprop="currency" content="USD">
+        <span itemprop="value" itemscope itemtype="https://schema.org/QuantitativeValue">
+            <meta itemprop="minValue" content="<%= job.salaryMin %>">
+            <meta itemprop="maxValue" content="<%= job.salaryMax %>">
+            <meta itemprop="unitText" content="YEAR">
+            <%= job.salaryLabel %>
+        </span>
+    </p>
+
+    <ul class="job-card__tags" aria-label="Job tags">
+        <% job.tags.forEach((tag) => { %>
+            <li class="job-card__tag"><%= tag %></li>
+        <% }); %>
+    </ul>
+
+    <a class="job-card__link"
+       href="./job-details.html"
+       data-i18n="actions.viewRole">View role</a>
+</article>
