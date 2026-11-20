@@ -1,11 +1,25 @@
+import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  server: { port: 5173, open: true },
-  preview: { port: 4173 },
-  root: ".",
-  build: {
-    outDir: "dist",
-    sourcemap: true
-  }
+    root: "site",
+    publicDir: "../public",
+    base: "./",
+
+    build: {
+        outDir: "../dist",
+        emptyOutDir: true,
+        rollupOptions: {
+            input: {
+                home: resolve("site/index.html"),
+                jobs: resolve("site/jobs.html"),
+                details: resolve("site/job-details.html"),
+                apply: resolve("site/apply.html")
+            }
+        }
+    },
+
+    server: {
+        port: 5173
+    }
 });

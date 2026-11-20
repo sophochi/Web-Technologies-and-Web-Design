@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Senior Product Designer role at NoSanD NoGames.">
+    <title>Senior Product Designer — JOBLY</title>
+    <link rel="icon" href="./assets/icons/jobly-cat.svg" type="image/svg+xml">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="site-header__brand" href="./index.html">
+        <img class="site-header__logo" src="./assets/icons/jobly-cat.svg" alt="" width="32" height="32">
+        <span class="site-header__name">JOBLY</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+        <ul class="site-header__list">
+            <li class="site-header__item">
+                <a class="site-header__link" href="./jobs.html" data-i18n="nav.jobs">Find jobs</a>
+            </li>
+            <li class="site-header__item">
+                <a class="site-header__link" href="./jobs.html#company-filter" data-i18n="nav.companies">Companies</a>
+            </li>
+            <li class="site-header__item">
+                <a class="site-header__link" href="./index.html#about" data-i18n="nav.about">About</a>
+            </li>
+        </ul>
+    </nav>
+
+    <button class="site-header__signin" type="button" data-i18n="actions.signIn">Sign in</button>
+</header>
+
+<main class="job-details-page">
+    <article
+        class="job-details"
+        itemscope
+        itemtype="https://schema.org/JobPosting"
+    >
+        <meta itemprop="datePosted" content="2026-11-01">
+        <meta itemprop="validThrough" content="2026-12-20T23:59">
+        <meta itemprop="employmentType" content="FULL_TIME">
+        <meta itemprop="jobLocationType" content="TELECOMMUTE">
+
+        <header class="job-details__header">
+            <p
+                class="job-details__company"
+                itemprop="hiringOrganization"
+                itemscope
+                itemtype="https://schema.org/Organization"
+            >
+                <span itemprop="name">NoSanD NoGames</span>
+            </p>
+
+            <h1
+                itemprop="title"
+                data-i18n="details.title"
+            >
+                Senior Product Designer
+            </h1>
+
+            <ul class="job-details__tags">
+                <li>Remote</li>
+                <li>Full-time</li>
+                <li>Senior</li>
+            </ul>
+
+            <picture class="job-details__media">
+                <source
+                    type="image/webp"
+                    srcset="
+                        ./assets/images/details-hero-320.webp 320w,
+                        ./assets/images/details-hero-639.webp 639w
+                    "
+                    sizes="(max-width: 767px) 100vw, 420px"
+                >
+
+                <img
+                    src="./assets/images/details-hero-639.jpg"
+                    srcset="
+                        ./assets/images/details-hero-320.jpg 320w,
+                        ./assets/images/details-hero-639.jpg 639w
+                    "
+                    sizes="(max-width: 767px) 100vw, 420px"
+                    width="639"
+                    height="426"
+                    alt="Designer working with a color palette and interface mockups"
+                    decoding="async"
+                >
+            </picture>
+        </header>
+
+        <section
+            class="job-details__section"
+            aria-labelledby="about-role-title"
+        >
+            <h2
+                id="about-role-title"
+                data-i18n="details.about.title"
+            >
+                About the role
+            </h2>
+
+            <p
+                itemprop="description"
+                data-i18n="details.about.text"
+            >
+                You will shape calm, useful product experiences for a startup
+                team and work closely with product and engineering from first
+                sketch to shipped feature.
+            </p>
+        </section>
+
+        <section
+            class="job-details__section"
+            aria-labelledby="responsibilities-title"
+        >
+            <h2
+                id="responsibilities-title"
+                data-i18n="details.responsibilities.title"
+            >
+                What you’ll do
+            </h2>
+
+            <ul>
+                <li data-i18n="details.responsibilities.one">
+                    Design end-to-end product flows.
+                </li>
+
+                <li data-i18n="details.responsibilities.two">
+                    Grow a small, practical design system.
+                </li>
+
+                <li data-i18n="details.responsibilities.three">
+                    Prototype and test product ideas.
+                </li>
+
+                <li data-i18n="details.responsibilities.four">
+                    Partner with engineers during delivery.
+                </li>
+            </ul>
+        </section>
+
+        <section
+            class="job-details__section"
+            aria-labelledby="requirements-title"
+        >
+            <h2
+                id="requirements-title"
+                data-i18n="details.requirements.title"
+            >
+                Requirements
+            </h2>
+
+            <ul class="job-details__skills">
+                <li itemprop="skills">Figma</li>
+                <li itemprop="skills">UI/UX</li>
+                <li itemprop="skills">SaaS</li>
+                <li itemprop="skills">Design systems</li>
+            </ul>
+        </section>
+
+        <div
+            class="job-details__salary"
+            itemprop="baseSalary"
+            itemscope
+            itemtype="https://schema.org/MonetaryAmount"
+        >
+            <meta itemprop="currency" content="USD">
+
+            <div
+                itemprop="value"
+                itemscope
+                itemtype="https://schema.org/QuantitativeValue"
+            >
+                <meta itemprop="minValue" content="80000">
+                <meta itemprop="maxValue" content="120000">
+                <meta itemprop="unitText" content="YEAR">
+            </div>
+        </div>
+    </article>
+</main>
+
+<aside
+    class="job-cta"
+    aria-labelledby="job-cta-title"
+>
+    <h2
+        id="job-cta-title"
+        data-i18n="details.cta.title"
+    >
+        Make your move.
+    </h2>
+
+    <dl>
+        <dt data-i18n="details.cta.salary">
+            Salary
+        </dt>
+        <dd>
+            $80k–120k
+        </dd>
+
+        <dt data-i18n="details.cta.workMode">
+            Work mode
+        </dt>
+        <dd>
+            Remote
+        </dd>
+
+        <dt data-i18n="details.cta.team">
+            Team
+        </dt>
+        <dd>
+            20–50 people
+        </dd>
+    </dl>
+
+    <a
+        href="./apply.html"
+        data-i18n="actions.applyNow"
+    >
+        Apply now
+    </a>
+
+    <section
+        class="job-cta__reasons"
+        aria-labelledby="reasons-title"
+    >
+        <h3
+            id="reasons-title"
+            data-i18n="details.reasons.title"
+        >
+            Why this role stands out
+        </h3>
+
+        <ul>
+            <li>Remote-friendly</li>
+            <li>Small product team</li>
+            <li>Direct impact</li>
+            <li>Flexible schedule</li>
+            <li>Growth opportunities</li>
+        </ul>
+    </section>
+</aside>
+
+<footer class="site-footer">
+    <a class="site-footer__brand" href="./index.html">
+        <img class="site-footer__logo" src="./assets/icons/jobly-cat.svg" alt="" width="28" height="28">
+        <span>JOBLY</span>
+    </a>
+    <p class="site-footer__tagline" data-i18n="footer.tagline">Jobs for curious humans.</p>
+    <p class="site-footer__copyright">© 2026 Korolova Sophia</p>
+</footer>
+</body>
+</html>

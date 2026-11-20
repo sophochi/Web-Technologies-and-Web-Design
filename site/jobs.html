@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse curated startup roles and filter by role, location and work format.">
+    <title>Startup jobs — JOBLY</title>
+    <link rel="icon" href="./assets/icons/jobly-cat.svg" type="image/svg+xml">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="site-header__brand" href="./index.html">
+        <img class="site-header__logo" src="./assets/icons/jobly-cat.svg" alt="" width="32" height="32">
+        <span class="site-header__name">JOBLY</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+        <ul class="site-header__list">
+            <li class="site-header__item">
+                <a class="site-header__link" href="./jobs.html" data-i18n="nav.jobs">Find jobs</a>
+            </li>
+            <li class="site-header__item">
+                <a class="site-header__link" href="./jobs.html#company-filter" data-i18n="nav.companies">Companies</a>
+            </li>
+            <li class="site-header__item">
+                <a class="site-header__link" href="./index.html#about" data-i18n="nav.about">About</a>
+            </li>
+        </ul>
+    </nav>
+
+    <button class="site-header__signin" type="button" data-i18n="actions.signIn">Sign in</button>
+</header>
+
+<main class="jobs-page">
+    <section class="jobs-hero" aria-labelledby="jobs-title">
+        <div class="jobs-hero__content">
+            <p class="jobs-hero__eyebrow" data-i18n="jobs.hero.eyebrow">Startup jobs</p>
+            <h1 id="jobs-title" data-i18n="jobs.hero.title">Startup jobs</h1>
+            <p data-i18n="jobs.hero.text">Hand-picked roles from small, ambitious tech teams.</p>
+
+            <form class="job-search" action="./jobs.html" method="get" role="search">
+                <div class="job-search__field">
+                    <label for="jobs-role" data-i18n="search.roleLabel">Search by role or company</label>
+                    <input id="jobs-role" name="query" type="search" placeholder="Search by role or company" data-i18n-placeholder="search.jobsPlaceholder">
+                </div>
+                <div class="job-search__field">
+                    <label for="jobs-location" data-i18n="search.locationLabel">Location</label>
+                    <input id="jobs-location" name="location" type="search" placeholder="Location" data-i18n-placeholder="search.locationPlaceholder">
+                </div>
+                <button type="submit" data-i18n="actions.search">Search</button>
+            </form>
+        </div>
+
+        <picture class="jobs-hero__media">
+            <source
+                type="image/webp"
+                srcset="./assets/images/jobs-hero-240.webp 240w, ./assets/images/jobs-hero-480.webp 480w"
+                sizes="(max-width: 767px) 100vw, 360px">
+            <img
+                src="./assets/images/jobs-hero-480.jpg"
+                srcset="./assets/images/jobs-hero-240.jpg 240w, ./assets/images/jobs-hero-480.jpg 480w"
+                sizes="(max-width: 767px) 100vw, 360px"
+                width="480"
+                height="320"
+                alt="Candidate holding a résumé during a job interview"
+                decoding="async">
+        </picture>
+    </section>
+
+    <section class="jobs-results" aria-labelledby="results-title">
+        <form class="filters" action="./jobs.html" method="get">
+            <fieldset>
+                <legend data-i18n="jobs.filters.legend">Filter</legend>
+                <label><input type="checkbox" name="workMode" value="remote"> <span data-i18n="filters.remote">Remote</span></label>
+                <label><input type="checkbox" name="category-design" value="design"> <span data-i18n="filters.design">Design</span></label>
+                <label><input type="checkbox" name="category-engineering" value="engineering"> <span data-i18n="filters.engineering">Engineering</span></label>
+                <label><input type="checkbox" name="category-junior" value="junior"> <span data-i18n="filters.juniorFriendly">Junior friendly</span></label>
+                <label><input type="checkbox" name="sort" value="newest"> <span data-i18n="filters.newest">Newest</span></label>
+            </fieldset>
+
+            <div id="company-filter" class="filters__company">
+                <label for="company" data-i18n="filters.company">Company</label>
+                <select id="company" name="company">
+                    <option value="">All companies</option>
+                    <option value="nosand-nogames">NoSanD NoGames</option>
+                    <option value="rozetka">Rozetka</option>
+                    <option value="ruslan-baginskiy">Ruslan Baginskiy</option>
+                </select>
+            </div>
+
+            <button type="submit" data-i18n="actions.applyFilters">Apply filters</button>
+        </form>
+
+        <header class="jobs-results__header">
+            <h2 id="results-title" data-i18n="jobs.results.title">128 roles this week</h2>
+            <p data-i18n="jobs.results.text">Curated startup roles with clear filters and quick role previews.</p>
+            <p><time datetime="2026-11-20" data-i18n="jobs.results.updated">Updated today</time></p>
+        </header>
+
+        <ul id="job-list" class="jobs-results__list">
+
+                <li class="jobs-results__item">
+                    <article class="job-card job-card--featured"
+         itemscope
+         itemtype="https://schema.org/JobPosting">
+    <meta itemprop="datePosted" content="2026-11-01">
+    <meta itemprop="employmentType" content="FULL_TIME">
+
+    <header class="job-card__header">
+        <p class="job-card__company"
+           itemprop="hiringOrganization"
+           itemscope
+           itemtype="https://schema.org/Organization">
+            <span itemprop="name">NoSanD NoGames</span>
+        </p>
+
+            <span class="job-card__badge" data-i18n="jobs.featured">Featured</span>
+
+        <h3 class="job-card__title" itemprop="title">Senior Product Designer</h3>
+    </header>
+
+    <p class="job-card__meta">
+        <span itemprop="jobLocationType">Remote</span>
+        · <span>Full-time</span>
+    </p>
+
+    <p class="job-card__location">Remote</p>
+
+    <p class="job-card__salary"
+       itemprop="baseSalary"
+       itemscope
+       itemtype="https://schema.org/MonetaryAmount">
+        <meta itemprop="currency" content="USD">
+        <span itemprop="value" itemscope itemtype="https://schema.org/QuantitativeValue">
+            <meta itemprop="minValue" content="80000">
+            <meta itemprop="maxValue" content="120000">
+            <meta itemprop="unitText" content="YEAR">
+            $80k–120k
+        </span>
+    </p>
+
+    <ul class="job-card__tags">
+
+            <li class="job-card__tag">Design</li>
+
+            <li class="job-card__tag">Remote</li>
+
+    </ul>
+
+    <a class="job-card__link"
+       href="./job-details.html"
+       data-i18n="actions.viewRole">View role</a>
+</article>
+                </li>
+
+                <li class="jobs-results__item">
+                    <article class="job-card job-card--default"
+         itemscope
+         itemtype="https://schema.org/JobPosting">
+    <meta itemprop="datePosted" content="2026-11-05">
+    <meta itemprop="employmentType" content="FULL_TIME">
+
+    <header class="job-card__header">
+        <p class="job-card__company"
+           itemprop="hiringOrganization"
+           itemscope
+           itemtype="https://schema.org/Organization">
+            <span itemprop="name">Rozetka</span>
+        </p>
+
+        <h3 class="job-card__title" itemprop="title">Frontend Developer</h3>
+    </header>
+
+    <p class="job-card__meta">
+        <span itemprop="jobLocationType">Remote</span>
+        · <span>Full-time</span>
+    </p>
+
+    <p class="job-card__location">Kyiv / Remote</p>
+
+    <p class="job-card__salary"
+       itemprop="baseSalary"
+       itemscope
+       itemtype="https://schema.org/MonetaryAmount">
+        <meta itemprop="currency" content="USD">
+        <span itemprop="value" itemscope itemtype="https://schema.org/QuantitativeValue">
+            <meta itemprop="minValue" content="70000">
+            <meta itemprop="maxValue" content="100000">
+            <meta itemprop="unitText" content="YEAR">
+            $70k–100k
+        </span>
+    </p>
+
+    <ul class="job-card__tags">
+
+            <li class="job-card__tag">Engineering</li>
+
+            <li class="job-card__tag">Junior friendly</li>
+
+    </ul>
+
+    <a class="job-card__link"
+       href="./job-details.html"
+       data-i18n="actions.viewRole">View role</a>
+</article>
+                </li>
+
+                <li class="jobs-results__item">
+                    <article class="job-card job-card--default"
+         itemscope
+         itemtype="https://schema.org/JobPosting">
+    <meta itemprop="datePosted" content="2026-11-08">
+    <meta itemprop="employmentType" content="FULL_TIME">
+
+    <header class="job-card__header">
+        <p class="job-card__company"
+           itemprop="hiringOrganization"
+           itemscope
+           itemtype="https://schema.org/Organization">
+            <span itemprop="name">Ruslan Baginskiy</span>
+        </p>
+
+        <h3 class="job-card__title" itemprop="title">Product Manager</h3>
+    </header>
+
+    <p class="job-card__meta">
+        <span itemprop="jobLocationType">Hybrid</span>
+        · <span>Full-time</span>
+    </p>
+
+    <p class="job-card__location">Europe</p>
+
+    <p class="job-card__salary"
+       itemprop="baseSalary"
+       itemscope
+       itemtype="https://schema.org/MonetaryAmount">
+        <meta itemprop="currency" content="USD">
+        <span itemprop="value" itemscope itemtype="https://schema.org/QuantitativeValue">
+            <meta itemprop="minValue" content="75000">
+            <meta itemprop="maxValue" content="110000">
+            <meta itemprop="unitText" content="YEAR">
+            $75k–110k
+        </span>
+    </p>
+
+    <ul class="job-card__tags">
+
+            <li class="job-card__tag">Product</li>
+
+            <li class="job-card__tag">Hybrid</li>
+
+    </ul>
+
+    <a class="job-card__link"
+       href="./job-details.html"
+       data-i18n="actions.viewRole">View role</a>
+</article>
+                </li>
+
+        </ul>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <a class="site-footer__brand" href="./index.html">
+        <img class="site-footer__logo" src="./assets/icons/jobly-cat.svg" alt="" width="28" height="28">
+        <span>JOBLY</span>
+    </a>
+    <p class="site-footer__tagline" data-i18n="footer.tagline">Jobs for curious humans.</p>
+    <p class="site-footer__copyright">© 2026 Korolova Sophia</p>
+</footer>
+</body>
+</html>
