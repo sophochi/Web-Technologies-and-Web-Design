@@ -3,17 +3,27 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+
   "scripts": {
     "render": "node scripts/render.mjs",
+
     "validate:html": "html-validate \"site/*.html\"",
-    "dev:webpack": "concurrently \"webpack serve --mode=development\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
+
+    "lint": "eslint . --ext .js,.mjs",
+
     "dev:vite": "npm run render && concurrently \"vite\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
+
+    "build:vite": "npm run render && npm run validate:html && npm run lint && vite build",
+
+    "preview:vite": "vite preview",
+
+    "dev:webpack": "concurrently \"webpack serve --mode=development\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
+
     "build:webpack": "npm run lint && webpack --mode=production",
-    "build:vite": "npm run render && npm run lint && vite build",
-    "preview:webpack": "npm run lint && webpack serve --mode=development",
-    "preview:vite": "npm run lint && vite preview",
-    "lint": "eslint . --ext .js,.mjs"
+
+    "preview:webpack": "webpack serve --mode=development"
   },
+
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.23.0",
@@ -32,6 +42,7 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
+
   "dependencies": {
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
