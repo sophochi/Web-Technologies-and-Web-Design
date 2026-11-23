@@ -26,7 +26,9 @@
             </form>
         </div>
 
-        <picture class="hero__media">
+        <div class="hero__visual">
+            <span class="hero__sticker hero__sticker--top">Curated</span>
+            <picture class="hero__media">
             <source
                 type="image/webp"
                 srcset="./assets/images/home-hero-390.webp 390w, ./assets/images/home-hero-780.webp 780w"
@@ -39,7 +41,9 @@
                 height="520"
                 alt="Laptop beside a playful dog in a creative workspace"
                 decoding="async">
-        </picture>
+            </picture>
+            <span class="hero__sticker hero__sticker--bottom">Remote<br>friendly</span>
+        </div>
     </section>
 
     <section class="featured-jobs" aria-labelledby="featured-title">
@@ -48,7 +52,7 @@
         <ul class="featured-jobs__list">
             <% jobs.forEach((job) => { %>
                 <li class="featured-jobs__item">
-                    <%- include('../partials/job-card.ejs', { job }) %>
+                    <%- include('../partials/job-card.ejs', { job: { ...job, featured: true } }) %>
                 </li>
             <% }); %>
         </ul>
