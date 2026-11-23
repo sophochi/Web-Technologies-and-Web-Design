@@ -1,22 +1,28 @@
-<header class="site-header">
-    <a class="site-header__brand" href="./index.html">
+<% const headerVariant = typeof variant === 'undefined' ? 'default' : variant; %>
+<header class="site-header site-header--<%= headerVariant %>">
+    <a class="site-header__brand" href="./index.html" aria-label="JOBLY — Home">
         <img class="site-header__logo" src="./assets/icons/jobly-cat.svg" alt="" width="32" height="32">
         <span class="site-header__name">JOBLY</span>
     </a>
 
-    <nav class="site-header__nav" aria-label="Main navigation">
-        <ul class="site-header__list">
-            <li class="site-header__item">
-                <a class="site-header__link" href="./jobs.html" data-i18n="nav.jobs">Find jobs</a>
-            </li>
-            <li class="site-header__item">
-                <a class="site-header__link" href="./jobs.html#company-filter" data-i18n="nav.companies">Companies</a>
-            </li>
-            <li class="site-header__item">
-                <a class="site-header__link" href="./index.html#about" data-i18n="nav.about">About</a>
-            </li>
-        </ul>
-    </nav>
-
-    <button class="site-header__signin" type="button" data-i18n="actions.signIn">Sign in</button>
+    <% if (headerVariant === 'details') { %>
+        <a class="site-header__back" href="./jobs.html" aria-label="Back to all jobs">← All jobs</a>
+    <% } else { %>
+        <nav class="site-header__nav" aria-label="Main navigation">
+            <ul class="site-header__list">
+                <li class="site-header__item">
+                    <a class="site-header__link" href="./jobs.html" data-i18n="nav.jobs">Find jobs</a>
+                </li>
+                <li class="site-header__item">
+                    <a class="site-header__link" href="./jobs.html#company-filter" data-i18n="nav.companies">Companies</a>
+                </li>
+                <li class="site-header__item">
+                    <a class="site-header__link" href="./index.html#about" data-i18n="nav.about">About</a>
+                </li>
+            </ul>
+        </nav>
+        <% if (headerVariant !== 'apply') { %>
+            <button class="site-header__signin" type="button" data-i18n="actions.signIn">Sign in</button>
+        <% } %>
+    <% } %>
 </header>
