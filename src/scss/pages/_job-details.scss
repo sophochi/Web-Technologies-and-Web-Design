@@ -1,117 +1,74 @@
 @use '../abstracts' as a;
 
-.job-details-shell {
+.job-details-page { width: min(100%, a.$container); margin-inline: auto; }
+.job-details { display: block; }
+
+.job-details__header {
     display: grid;
-    gap: a.$space-5;
-    padding-top: a.$space-6;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    align-items: center;
+    padding: 42px 24px;
+    background: a.$color-blush;
 }
-
-.job-details-page {
-    min-width: 0;
+.job-details__intro { display: grid; align-content: center; justify-items: start; gap: 20px; min-width: 0; }
+.job-details__eyebrows { @include a.flex(row, center, flex-start, 8px, wrap); }
+.job-details__company { color: a.$color-graphite; font-size: 13px; }
+.job-details__highlight { display: inline-flex; padding: 6px 11px; border-radius: 999px; color: a.$color-wine; background: a.$color-pink; font-size: 12px; font-weight: 700; }
+.job-details__highlight--orange { background: a.$color-orange; }
+.job-details__header h1 {
+    max-width: 10.6ch;
+    font-size: clamp(48px,6vw,82px);
+    line-height: 0.97;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
 }
+.job-details__visual { position: relative; width: min(100%,440px); justify-self: center; }
+.job-details__media img { width: 100%; aspect-ratio: 1.03; object-fit: cover; border-radius: 17px; }
+.job-details__sticker { position: absolute; z-index: 1; right: 0; top: -27px; padding: 6px 12px; background: a.$color-orange; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.job-details__tags { margin-top: 7px; }
 
-.job-details {
-    @include a.grid-row(4, 16px, a.$space-5);
-
-    &__header,
-    &__section,
-    &__salary {
-        @include a.grid-col(4);
-    }
-
-    &__header {
-        display: grid;
-        gap: a.$space-4;
-        padding: a.$space-6;
-        background: a.$color-blush;
-        border-radius: a.$radius-card;
-    }
-
-    &__company {
-        color: a.$color-graphite;
-        font-size: 0.86rem;
-    }
-
-    &__media img {
-        width: 100%;
-        max-height: 320px;
-        object-fit: cover;
-        border-radius: a.$radius-card;
-    }
-
-    &__section {
-        display: grid;
-        gap: a.$space-3;
-        padding: a.$space-6;
-        background: a.$color-white;
-        border: 1px solid a.$color-border;
-        border-radius: a.$radius-card;
-    }
-
-    &__section > ul:not(.job-details__skills) {
-        display: grid;
-        gap: a.$space-2;
-        padding-left: 1.1rem;
-    }
-
-    @include a.tablet {
-        @include a.grid-row(8, 16px, a.$space-5);
-        &__header,
-        &__section,
-        &__salary { @include a.grid-col(8); }
-    }
-
-    @include a.desktop {
-        @include a.grid-row(8, 24px, a.$space-5);
-        &__header,
-        &__section,
-        &__salary { @include a.grid-col(8); }
-    }
-}
-
-.job-cta {
+.job-details__content {
     display: grid;
-    gap: a.$space-4;
-    padding: a.$space-6;
-    color: a.$color-cream;
-    background: a.$color-wine;
-    border-radius: a.$radius-card;
-
-    h2,
-    h3,
-    dt,
-    dd {
-        color: inherit;
-    }
-
-    dl {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: a.$space-2 a.$space-4;
-    }
-
-    dt { opacity: 0.72; }
-
-    &__reasons {
-        display: grid;
-        gap: a.$space-3;
-        padding-top: a.$space-2;
-        border-top: 1px solid rgb(243 232 223 / 22%);
-    }
-
-    &__reasons li {
-        color: a.$color-wine;
-    }
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 24px;
+    padding: 28px 24px 70px;
 }
+.job-details__sections { display: grid; gap: 22px; }
+.job-details__section { display: grid; gap: 15px; padding: 22px 24px; background: a.$color-white; border-radius: 17px; }
+.job-details__section h2 { font-size: clamp(25px,2.6vw,32px); line-height: 1.06; }
+.job-details__section p, .job-details__section li { font-size: 14px; line-height: 1.55; }
+.job-details__section > ul:not(.job-details__skills) { display: grid; gap: 9px; padding-left: 0; list-style: none; }
+.job-details__section > ul:not(.job-details__skills) li { position: relative; padding-left: 15px; }
+.job-details__section > ul:not(.job-details__skills) li::before { position: absolute; content: ''; top: .57em; left: 0; width: 7px; height: 7px; background: a.$color-pink; border-radius: 50%; }
+.job-details__section > ul:not(.job-details__skills) li:nth-child(even)::before { background: a.$color-orange; }
+.job-details__salary { display: none; }
 
+.job-cta { display: grid; gap: 19px; min-width: 0; }
+.job-cta__panel { display: grid; gap: 14px; padding: 26px; color: a.$color-cream; background: a.$color-wine; border-radius: 18px; }
+.job-cta__eyebrow { text-transform: uppercase; font-size: 11px; letter-spacing: .04em; opacity: .8; }
+.job-cta__panel h2 { max-width: 9ch; color: inherit; font-size: clamp(30px,3.5vw,48px); line-height: 1; }
+.job-cta__panel dl { display: grid; grid-template-columns: 96px 1fr; gap: 5px 12px; font-size: 14px; }
+.job-cta__panel dt { opacity: .85; }
+.job-cta__panel dd { font-weight: 600; }
+.job-cta__panel > a { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 6px; padding: 10px 18px; border-radius: 999px; color: a.$color-wine; background: a.$color-pink; font-weight: 750; text-decoration: none; }
+.job-cta__panel > a:hover { background: a.tint(a.$color-pink,15%); }
+.job-cta__reasons { display: grid; gap: 12px; padding: 20px; border-radius: 18px; background: a.$color-white; }
+.job-cta__reasons h3 { font-family: a.$font-heading; font-size: 19px; }
+.job-cta__reasons ul { display: grid; gap: 8px; list-style: none; }
+.job-cta__reasons li { display: flex; align-items: center; justify-content: center; min-height: 30px; padding: 6px 12px; background: a.$color-cream; border-radius: 999px; font-size: 12px; color: a.$color-wine; text-align: center; }
+
+@include a.tablet {
+    .job-details__header { grid-template-columns: minmax(0,1.25fr) minmax(270px,.75fr); min-height: 435px; padding: 40px 48px; }
+    .job-details__visual { justify-self: end; }
+    .job-details__content { grid-template-columns: minmax(0,1.35fr) minmax(270px,.85fr); padding: 40px 48px 75px; }
+}
 @include a.desktop {
-    .job-details-shell {
-        grid-template-columns: minmax(0, 2fr) minmax(280px, 0.8fr);
-        align-items: start;
-    }
-
-    .job-cta {
-        position: sticky;
-        top: a.$space-6;
-    }
+    .job-details__header { grid-template-columns: minmax(0,1.6fr) minmax(340px,.7fr); min-height: 460px; padding: 45px 72px; }
+    .job-details__header h1 { max-width: 8.5ch; font-size: 78px; }
+    .job-details__visual { width: min(100%, 360px); }
+    .job-details__content { grid-template-columns: minmax(0, 1.42fr) minmax(340px, .9fr); gap: 26px; padding: 42px 72px 80px; }
+    .job-cta__panel { padding: 26px; }
 }
