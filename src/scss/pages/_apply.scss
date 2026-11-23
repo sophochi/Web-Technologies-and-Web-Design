@@ -1,92 +1,100 @@
 @use '../abstracts' as a;
 
-.apply-shell {
-    display: grid;
-    gap: a.$space-5;
-    padding-top: a.$space-6;
+.apply-hero {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, a.$container);
+    min-height: 360px;
+    margin: 0 auto;
+    overflow: hidden;
+    color: a.$color-cream;
+    background: a.$color-wine;
+
+    &__media, &__media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    &__media img { object-fit: cover; object-position: center; }
+    &::after { content: ''; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgb(48 27 28 / 83%),rgb(60 31 33 / 62%)); }
+    .site-header { z-index: 2; }
+    &__content { position: relative; z-index: 1; display: grid; gap: 14px; justify-items: start; max-width: 740px; padding: 45px 24px 55px; }
+    &__eyebrow { padding: 6px 12px; background: a.$color-cream; color: a.$color-wine; text-transform: uppercase; font-size: 11px; font-weight: 650; }
+    h1 { color: a.$color-cream; font-size: clamp(41px, 5.4vw, 70px); line-height: .98; }
+    &__meta { font-size: 14px; }
+    &__tags { @include a.flex(row, center, flex-start, 8px, wrap); list-style: none; }
+    &__tags li { padding: 7px 12px; border-radius: 999px; font-size: 12px; color: a.$color-wine; background: a.$color-pink; }
+    &__tags li:nth-child(2) { background: a.$color-orange; }
+    &__tags li:nth-child(3) { background: a.$color-white; }
+    @include a.tablet {
+        min-height: 400px;
+        &__content { padding: 42px 48px 60px; }
+    }
+    @include a.desktop {
+        min-height: 395px;
+        &__content { padding: 45px 72px 65px; }
+    }
 }
 
-.apply-page {
+.apply-layout {
     display: grid;
-    gap: a.$space-5;
-    min-width: 0;
-
-    &__header {
-        display: grid;
-        gap: a.$space-3;
-        padding: a.$space-6;
-        color: a.$color-cream;
-        background: a.$color-wine;
-        border-radius: a.$radius-card;
-    }
-
-    &__header h1,
-    &__header > p {
-        color: inherit;
-    }
-
-    &__media img {
-        width: 100%;
-        max-height: 230px;
-        object-fit: cover;
-        border-radius: a.$radius-card;
-    }
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 22px;
+    padding: 28px 24px 70px;
 }
+.apply-sidebar { display: grid; gap: 18px; min-width: 0; }
+.application-summary {
+    display: grid;
+    gap: 12px;
+    padding: 22px;
+    background: a.$color-white;
+    border-radius: 17px;
+    &__eyebrow { justify-self: start; padding: 5px 9px; background: a.$color-cream; border-radius: 999px; text-transform: uppercase; font-size: 11px; font-weight: 700; }
+    h2 { font-size: clamp(25px,2.9vw,33px); line-height: 1.03; }
+    &__meta { color: a.$color-graphite; font-size: 12px; }
+    dl { display: grid; grid-template-columns: minmax(74px, .7fr) minmax(0,1fr); gap: 7px 9px; font-size: 12px; }
+    dt { color: a.$color-graphite; }
+    dd { text-align: right; font-weight: 650; }
+    &__tags { @include a.flex(row, center, flex-start, 6px, wrap); list-style: none; }
+    &__tags li { padding: 6px 10px; background: a.$color-cream; border-radius: 999px; font-size: 11px; }
+    &__tags li:first-child { background: a.$color-pink; }
+    &__tags li:nth-child(2) { background: a.$color-orange; }
+    &__view, &__save { display: flex; align-items: center; justify-content: center; min-height: 36px; border-radius: 999px; font-size: 12px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+    &__view { color: a.$color-white; background: a.$color-wine; }
+    &__save { color: a.$color-wine; background: a.$color-cream; border: 0; cursor: not-allowed; }
+}
+.apply-sidebar__note {
+    display: grid;
+    gap: 11px;
+    padding: 22px;
+    background: a.$color-white;
+    border-radius: 17px;
+    h3 { font-size: 22px; line-height: 1.05; }
+    p { font-size: 13px; line-height: 1.45; color: a.$color-graphite; }
+    ul { @include a.flex(row, center, flex-start, 7px, wrap); list-style: none; }
+    li { padding: 6px 9px; background: a.$color-cream; border-radius: 999px; font-size: 11px; }
+    li:first-child { background: a.$color-pink; }
+    li:nth-child(2) { background: a.$color-orange; }
+}
+.apply-sidebar__cat { @include a.flex(row,center,center); width: 60px; height: 60px; border-radius: 12px; background: a.$color-pink; }
 
 .application {
     display: grid;
-    gap: a.$space-5;
-    padding: a.$space-6;
-    background: a.$color-white;
-    border: 1px solid a.$color-border;
-    border-radius: a.$radius-card;
-
-    &__header {
-        display: grid;
-        gap: a.$space-2;
-    }
-
-    &__header p {
-        color: a.$color-graphite;
-    }
+    align-content: start;
+    gap: 23px;
+    min-width: 0;
+    padding: 26px;
+    background: #f1e5dc;
+    border-radius: 18px;
+    &__header { display: grid; gap: 9px; }
+    &__eyebrow { justify-self: start; padding: 6px 11px; border-radius: 999px; background: a.$color-pink; color: a.$color-wine; font-size: 11px; font-weight: 750; text-transform: uppercase; }
+    h2 { font-size: clamp(29px,3.4vw,43px); }
+    &__header p:last-child { color: a.$color-graphite; font-size: 13px; }
+    input { min-height: 44px; border-radius: 8px; border: 0; }
+    textarea { border: 0; border-radius: 8px; min-height: 180px; }
+    .application-form__footer button { min-height: 39px; padding-inline: 21px; }
 }
-
-.application-summary {
-    display: grid;
-    gap: a.$space-3;
-    padding: a.$space-5;
-    background: a.tint(a.$color-cream, 30%);
-    border: 1px solid a.$color-border;
-    border-radius: a.$radius-card;
-
-    dl {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: a.$space-2 a.$space-4;
-    }
-
-    dt { color: a.$color-graphite; }
-
-    a {
-        width: max-content;
-        font-weight: 700;
-    }
+@include a.tablet {
+    .apply-layout { grid-template-columns: minmax(240px,.8fr) minmax(0,1.55fr); gap: 22px; padding: 40px 48px 70px; }
 }
-
 @include a.desktop {
-    .apply-shell {
-        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
-        align-items: start;
-    }
-
-    .apply-page {
-        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.55fr);
-        align-items: start;
-    }
-
-    .apply-page__header,
-    .application-summary {
-        position: sticky;
-        top: a.$space-6;
-    }
+    .apply-layout { grid-template-columns: minmax(295px, .75fr) minmax(0,1.65fr); gap: 26px; padding: 42px 72px 80px; }
+    .application { padding: 30px; }
 }
