@@ -2,40 +2,66 @@
     title: 'Apply for Senior Product Designer — JOBLY',
     description: 'Application form for the Senior Product Designer role.'
 }) %>
-<%- include('../partials/header.ejs') %>
 
-<main class="apply-page">
-    <header class="apply-page__header">
-        <p data-i18n="apply.eyebrow">Apply for</p>
-        <h1 data-i18n="apply.title">Product Designer</h1>
-        <ul>
-            <li>Remote</li>
-            <li>Quick apply</li>
+<section class="apply-hero" aria-labelledby="apply-hero-title">
+    <picture class="apply-hero__media">
+        <source type="image/webp" srcset="./assets/images/apply-hero-512.webp 512w, ./assets/images/apply-hero-1024.webp 1024w" sizes="100vw">
+        <img src="./assets/images/apply-hero-1024.jpg" srcset="./assets/images/apply-hero-512.jpg 512w, ./assets/images/apply-hero-1024.jpg 1024w" sizes="100vw" width="1024" height="435" alt="Startup team collaborating in a creative office" decoding="async">
+    </picture>
+    <%- include('../partials/header.ejs', { variant: 'apply' }) %>
+    <div class="apply-hero__content">
+        <p class="apply-hero__eyebrow" data-i18n="apply.eyebrow">Apply for</p>
+        <h1 id="apply-hero-title" data-i18n="apply.title">Product Designer</h1>
+        <p class="apply-hero__meta"><%= selectedJob.company %> · <%= selectedJob.workMode %> · Full-time</p>
+        <ul class="apply-hero__tags">
+            <li>Editorial style</li>
+            <li>Fast + friendly process</li>
+            <li>Type + photos</li>
         </ul>
+    </div>
+</section>
 
-        <picture class="apply-page__media">
-            <source
-                type="image/webp"
-                srcset="./assets/images/apply-hero-512.webp 512w, ./assets/images/apply-hero-1024.webp 1024w"
-                sizes="(max-width: 767px) 100vw, 640px">
-            <img
-                src="./assets/images/apply-hero-1024.jpg"
-                srcset="./assets/images/apply-hero-512.jpg 512w, ./assets/images/apply-hero-1024.jpg 1024w"
-                sizes="(max-width: 767px) 100vw, 640px"
-                width="1024"
-                height="435"
-                alt="Startup team collaborating in a bright creative office"
-                decoding="async">
-        </picture>
-    </header>
+<main class="apply-layout">
+    <aside class="apply-sidebar" aria-labelledby="summary-title">
+        <section class="application-summary">
+            <p class="application-summary__eyebrow">Role</p>
+            <h2 id="summary-title" data-i18n="apply.summary.title">Product Designer</h2>
+            <p class="application-summary__meta"><%= selectedJob.company %> · Remote · Full-time</p>
+            <dl>
+                <dt>Company</dt>
+                <dd><%= selectedJob.company %></dd>
+                <dt>Type</dt>
+                <dd>Full-time</dd>
+                <dt>Location</dt>
+                <dd><%= selectedJob.workMode %></dd>
+                <dt>Pay range</dt>
+                <dd><%= selectedJob.salaryLabel %></dd>
+            </dl>
+            <ul class="application-summary__tags">
+                <li>Product design</li>
+                <li>Remote</li>
+                <li>Full-time</li>
+            </ul>
+            <a class="application-summary__view" href="./job-details.html" data-i18n="actions.viewRole">View role</a>
+            <button class="application-summary__save" type="button" disabled aria-label="Save for later, coming soon">Save for later</button>
+        </section>
+        <section class="apply-sidebar__note" aria-labelledby="apply-note-title">
+            <div class="apply-sidebar__cat"><img src="./assets/icons/jobly-cat.svg" alt="" width="30" height="30"></div>
+            <h3 id="apply-note-title">No cover-letter theatre.</h3>
+            <p>Keep it simple. Share your portfolio, a few words about your work, and why this role feels right for you.</p>
+            <ul>
+                <li>Portfolio first</li>
+                <li>Short intro</li>
+                <li>No fluff</li>
+            </ul>
+        </section>
+    </aside>
 
     <section class="application" aria-labelledby="application-title">
         <header class="application__header">
-            <p data-i18n="apply.application.eyebrow">Application</p>
+            <p class="application__eyebrow" data-i18n="apply.application.eyebrow">Application</p>
             <h2 id="application-title" data-i18n="apply.application.title">Tell us about you</h2>
-            <p id="application-help" data-i18n="apply.application.help">
-                Tell us who you are, where to find your work, and why this role feels like the right fit.
-            </p>
+            <p id="application-help" data-i18n="apply.application.help">No cover-letter drama. Keep it simple.</p>
         </header>
 
         <form class="application-form" action="./apply.html" method="get" aria-describedby="application-help">
@@ -43,43 +69,28 @@
                 <label for="first-name" data-i18n="form.firstName">First name</label>
                 <input id="first-name" name="firstName" type="text" autocomplete="given-name" required placeholder="Your first name" data-i18n-placeholder="form.firstNamePlaceholder">
             </div>
-
             <div class="application-form__field">
                 <label for="last-name" data-i18n="form.lastName">Last name</label>
                 <input id="last-name" name="lastName" type="text" autocomplete="family-name" required placeholder="Your last name" data-i18n-placeholder="form.lastNamePlaceholder">
             </div>
-
             <div class="application-form__field">
                 <label for="email" data-i18n="form.email">Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" data-i18n-placeholder="form.emailPlaceholder">
             </div>
-
             <div class="application-form__field">
                 <label for="portfolio" data-i18n="form.portfolio">Portfolio URL</label>
                 <input id="portfolio" name="portfolio" type="url" inputmode="url" placeholder="https://" data-i18n-placeholder="form.portfolioPlaceholder">
             </div>
-
             <div class="application-form__field">
                 <label for="message" data-i18n="form.message">A few words</label>
                 <textarea id="message" name="message" rows="6" placeholder="Why does this role fit?" data-i18n-placeholder="form.messagePlaceholder"></textarea>
             </div>
-
-            <button type="submit" data-i18n="actions.sendApplication">Send application</button>
+            <div class="application-form__footer">
+                <ul class="application-form__tags"><li>Portfolio first</li><li>Short intro</li><li>No fluff</li></ul>
+                <button type="submit" data-i18n="actions.sendApplication">Send application</button>
+            </div>
         </form>
     </section>
 </main>
-
-<aside class="application-summary" aria-labelledby="summary-title">
-    <h2 id="summary-title" data-i18n="apply.summary.title">Product Designer</h2>
-    <dl>
-        <dt>Company</dt>
-        <dd><%= selectedJob.company %></dd>
-        <dt>Location</dt>
-        <dd><%= selectedJob.workMode %></dd>
-        <dt>Salary</dt>
-        <dd><%= selectedJob.salaryLabel %></dd>
-    </dl>
-    <a href="./job-details.html" data-i18n="actions.viewRole">View role</a>
-</aside>
 
 <%- include('../partials/footer.ejs') %>
