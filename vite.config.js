@@ -1,10 +1,15 @@
+
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
     root: "site",
     publicDir: "../public",
-    base: "/Web-Technologies-and-Web-Design/",
+
+    // Локально — /, на GitHub Pages — шлях репозиторію
+    base: command === "serve"
+        ? "/"
+        : "/Web-Technologies-and-Web-Design/",
 
     build: {
         outDir: "../dist",
@@ -20,6 +25,13 @@ export default defineConfig({
     },
 
     server: {
-        port: 5173
+        host: "0.0.0.0",
+        port: 5173,
+        strictPort: true
+    },
+
+    preview: {
+        host: "0.0.0.0",
+        port: 4173
     }
-});
+}));
