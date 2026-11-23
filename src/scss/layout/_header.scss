@@ -1,65 +1,87 @@
 @use '../abstracts' as a;
 
 .site-header {
-    @include a.container;
     @include a.flex(row, center, space-between, a.$space-4);
-    min-height: 76px;
+    width: min(100%, a.$container);
+    min-height: 80px;
+    margin-inline: auto;
+    padding: 16px 24px;
     background: a.$color-cream;
+    position: relative;
+    z-index: 5;
+    flex-wrap: wrap;
+
+    &__nav { order: 3; width: 100%; }
 
     &__brand {
-        @include a.flex(row, center, flex-start, a.$space-2);
+        @include a.flex(row, center, flex-start, 10px);
         color: a.$color-wine;
+        text-decoration: none;
         font-family: a.$font-heading;
         font-weight: 800;
-        text-decoration: none;
+        font-size: 19px;
     }
 
-    &__logo {
-        width: 28px;
-        height: 28px;
-    }
+    &__logo { width: 31px; height: 31px; }
 
-    &__nav {
-        margin-left: auto;
-    }
+    &__nav { margin-left: auto; }
 
     &__list {
-        @include a.flex(row, center, flex-end, a.$space-5);
+        @include a.flex(row, center, flex-end, 12px, wrap);
         list-style: none;
     }
 
     &__link {
-        font-size: 0.9rem;
+        color: a.$color-wine;
+        font-size: 13px;
         font-weight: 600;
         text-decoration: none;
         transition: color a.$transition-fast;
+        &:hover, &:focus-visible { color: a.$color-pink; }
+    }
 
-        &:hover,
-        &:focus-visible {
-            color: a.$color-pink;
+    &__signin { display: none; }
+
+    &__back {
+        margin-left: auto;
+        color: a.$color-wine;
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: none;
+    }
+
+    &--overlay {
+        background: transparent;
+        color: a.$color-white;
+        & .site-header__brand,
+        & .site-header__link { color: a.$color-white; }
+        & .site-header__brand {
+            padding: 5px 8px;
+            background: rgb(69 40 41 / 45%);
         }
-    }
-
-    &__signin {
-        display: none;
-    }
-
-    @media (max-width: 767px) {
-        &__nav {
-            display: none;
+        & .site-header__link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 31px;
+            padding: 5px 12px;
+            color: a.$color-wine;
+            background: a.$color-cream;
+            border-radius: 999px;
         }
     }
 
     @include a.tablet {
-        min-height: 84px;
-        padding-inline: a.$space-6;
-
-        &__signin {
-            display: inline-flex;
-        }
+        min-height: 82px;
+        padding-inline: 48px;
+        flex-wrap: nowrap;
+        &__nav { order: 0; width: auto; }
+        &__list { gap: 22px; }
+        &__link { font-size: 14px; }
+        &__signin { display: inline-flex; min-height: 40px; padding: 8px 28px; }
     }
 
     @include a.desktop {
-        padding-inline: a.$space-10;
+        padding-inline: 72px;
+        &__list { gap: 26px; }
     }
 }
