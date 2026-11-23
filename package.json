@@ -1,51 +1,47 @@
+
 {
-  "name": "jobly-web-project",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-
-  "scripts": {
-    "render": "node scripts/render.mjs",
-
-    "validate:html": "html-validate \"site/*.html\"",
-
-    "lint": "eslint . --ext .js,.mjs",
-
-    "dev:vite": "npm run render && concurrently \"vite\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
-
-    "build:vite": "npm run render && npm run validate:html && npm run lint && vite build",
-
-    "preview:vite": "vite preview",
-
-    "dev:webpack": "concurrently \"webpack serve --mode=development\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
-
-    "build:webpack": "npm run lint && webpack --mode=production",
-
-    "preview:webpack": "webpack serve --mode=development"
-  },
-
-  "devDependencies": {
-    "@babel/core": "^7.23.0",
-    "@babel/preset-env": "^7.23.0",
-    "babel-loader": "^9.1.3",
-    "concurrently": "^8.2.2",
-    "css-loader": "^6.8.1",
-    "eslint": "^9.8.0",
-    "html-validate": "^10.17.0",
-    "html-webpack-plugin": "^5.6.0",
-    "json-server": "^0.17.4",
-    "sass": "^1.80.0",
-    "sass-loader": "^16.0.0",
-    "style-loader": "^3.3.3",
-    "vite": "^5.4.0",
-    "webpack": "^5.90.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  },
-
-  "dependencies": {
-    "axios": "^1.7.2",
-    "dayjs": "^1.11.11",
-    "ejs": "^3.1.10"
-  }
+    "name": "jobly-web-project",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "render": "node scripts/render.mjs",
+        "styles": "sass src/scss/main.scss public/assets/styles/main.css --style=expanded --no-source-map",
+        "styles:watch": "sass --watch src/scss/main.scss:public/assets/styles/main.css --style=expanded --no-source-map",
+        "validate:html": "html-validate \"site/*.html\"",
+        "lint": "eslint . --ext .js,.mjs",
+        "dev": "npm run dev:vite",
+        "dev:vite": "npm run styles && npm run render && concurrently \"vite --host 0.0.0.0\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
+        "build": "npm run build:vite",
+        "build:vite": "npm run styles && npm run render && npm run validate:html && npm run lint && vite build",
+        "preview": "npm run preview:vite",
+        "preview:vite": "vite preview --host 0.0.0.0",
+        "check": "npm run build:vite",
+        "dev:webpack": "concurrently \"webpack serve --mode=development\" \"json-server --watch api/db.json --routes api/routes.json --port 5174\"",
+        "build:webpack": "npm run lint && webpack --mode=production",
+        "preview:webpack": "webpack serve --mode=development"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.23.0",
+        "@babel/preset-env": "^7.23.0",
+        "babel-loader": "^9.1.3",
+        "concurrently": "^8.2.2",
+        "css-loader": "^6.8.1",
+        "eslint": "^9.8.0",
+        "html-validate": "^10.17.0",
+        "html-webpack-plugin": "^5.6.0",
+        "json-server": "^0.17.4",
+        "sass": "^1.80.0",
+        "sass-loader": "^16.0.0",
+        "style-loader": "^3.3.3",
+        "vite": "^5.4.0",
+        "webpack": "^5.90.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
+    },
+    "dependencies": {
+        "axios": "^1.7.2",
+        "dayjs": "^1.11.11",
+        "ejs": "^3.1.10"
+    }
 }
