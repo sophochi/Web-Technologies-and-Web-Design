@@ -1,123 +1,110 @@
 @use '../abstracts' as a;
 
 .hero {
-    @include a.grid-row(4, 16px, a.$space-6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
     align-items: center;
-    padding-block: a.$space-8;
+    padding: 40px 24px;
+    background: a.$color-blush;
+    min-height: 0;
 
-    &__content,
-    &__media {
-        @include a.grid-col(4);
-    }
-
-    &__content {
-        display: grid;
-        gap: a.$space-4;
-    }
-
-    &__eyebrow,
-    .featured-jobs__eyebrow,
-    .role-browser__eyebrow {
-        width: max-content;
-        padding: 6px 11px;
+    &__content { display: grid; align-content: center; justify-items: start; gap: 15px; min-width: 0; }
+    &__eyebrow {
+        display: inline-block;
+        padding: 7px 12px;
         background: a.$color-orange;
-        border-radius: a.$radius-button;
-        font-size: 0.76rem;
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.2;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.02em;
     }
-
-    &__text {
-        max-width: 58ch;
-        color: a.$color-graphite;
-        font-size: 1rem;
+    &__title {
+        max-width: 9ch;
+        font-size: clamp(44px, 8.5vw, 86px);
+        line-height: 0.96;
+        font-weight: 800;
+        letter-spacing: -0.045em;
+        text-transform: uppercase;
+        text-wrap: balance;
     }
-
-    &__media img {
+    &__text { max-width: 65ch; color: a.$color-graphite; font-size: 15px; }
+    &__visual { position: relative; justify-self: center; width: min(100%, 480px); }
+    &__media { display: block; width: 100%; }
+    &__media img { width: 100%; aspect-ratio: 0.93; object-fit: cover; object-position: center; border-radius: 18px; }
+    &__sticker {
+        position: absolute;
+        z-index: 2;
+        padding: 7px 13px;
+        font-weight: 750;
+        font-size: 12px;
+        line-height: 1.1;
+        color: a.$color-wine;
+        text-align: center;
+        text-transform: uppercase;
+        box-shadow: 0 3px 10px rgb(69 40 41 / 5%);
+        &--top { top: -28px; right: 0; background: a.$color-orange; }
+        &--bottom { bottom: -28px; right: 0; background: a.$color-pink; }
+    }
+    .job-search {
         width: 100%;
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
-        border-radius: a.$radius-hero;
+        padding: 10px;
+        background: a.$color-white;
+        border-radius: 13px;
+        gap: 10px;
+        &__field { gap: 0; }
+        label { @include a.type(a.$font-body, 13px, 1.2, 650); position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+        input { background: a.$color-white; min-height: 42px; border: 1px solid a.$color-border; }
+        button { color: a.$color-cream; background: a.$color-wine; min-height: 42px; white-space: nowrap; }
     }
 
     @include a.tablet {
-        @include a.grid-row(8, 16px, a.$space-8);
-        padding-block: a.$space-12;
-
-        &__content { @include a.grid-col(5); }
-        &__media { @include a.grid-col(3); }
+        grid-template-columns: minmax(0,1.3fr) minmax(0,0.85fr);
+        gap: 35px;
+        padding: 50px 48px;
+        min-height: 560px;
+        &__visual { justify-self: end; width: min(100%, 320px); }
     }
-
     @include a.desktop {
-        @include a.grid-row(12, 24px, a.$space-8);
-        padding-block: a.$space-16;
-        background: a.$color-blush;
-        border-radius: 0;
-
-        &__content { @include a.grid-col(7); }
-        &__media { @include a.grid-col(5); }
+        min-height: 610px;
+        padding: 64px 72px;
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+        column-gap: 70px;
+        &__title { font-size: clamp(66px, 5.5vw, 88px); }
+        &__visual { width: min(100%, 395px); margin-right: 8px; }
+        .job-search { max-width: 700px; }
     }
-}
-
-.featured-jobs,
-.role-browser,
-.about {
-    padding-block: a.$space-8;
 }
 
 .featured-jobs {
     display: grid;
-    gap: a.$space-4;
+    gap: 15px;
+    padding: 44px 24px 54px;
 
-    &__list {
-        @include a.grid-row(4, 16px);
-        list-style: none;
-    }
-
-    &__item {
-        @include a.grid-col(4);
-    }
+    &__eyebrow { color: a.$color-wine; font-size: 12px; font-weight: 650; letter-spacing: 0.035em; text-transform: uppercase; }
+    h2 { max-width: none; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; }
+    &__list { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 8px; list-style: none; }
+    &__item { min-width: 0; }
+    .job-card { box-shadow: none; min-height: 180px; }
+    .job-card__tags, .job-card__location { display: none; }
 
     @include a.tablet {
-        &__list { @include a.grid-row(8, 16px); }
-        &__item { @include a.grid-col(4); }
+        padding: 50px 48px 64px;
+        &__list { grid-template-columns: repeat(3, minmax(0,1fr)); }
+        .job-card { padding: 18px 20px; }
     }
-
-    @include a.desktop {
-        &__list { @include a.grid-row(12, 24px); }
-        &__item { @include a.grid-col(4); }
-    }
+    @include a.desktop { padding-inline: 72px; }
 }
 
-.role-browser {
-    display: grid;
-    gap: a.$space-4;
+// These Lab 2 sections remain accessible via the About link, but are not
+// shown in the default desktop Figma layout.
+.role-browser, .about { display: grid; gap: 16px; padding: 32px 24px; }
+.role-browser__list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; list-style: none; }
+.role-browser__list a { justify-content: center; min-height: 100px; background: a.$color-white; }
 
-    &__list {
-        @include a.grid-row(4, 16px);
-        list-style: none;
-    }
-
-    &__list li {
-        @include a.grid-col(2);
-    }
-
-    &__list a {
-        @include a.flex(column, flex-start, center, a.$space-1);
-        min-height: 110px;
-        background: a.$color-white;
-        border-radius: a.$radius-card;
-    }
-
-    &__list span {
-        color: a.$color-graphite;
-        font-size: 0.82rem;
-    }
-}
-
-.about {
-    max-width: 760px;
-    display: grid;
-    gap: a.$space-3;
+@include a.tablet {
+    .role-browser, .about { display: none; }
+    .about:target { display: grid; padding: 24px 48px; }
 }
