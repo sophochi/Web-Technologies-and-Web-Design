@@ -1,39 +1,25 @@
 @use '../abstracts' as a;
 
 .site-footer {
-    @include a.container;
-    @include a.flex(column, flex-start, flex-start, a.$space-3);
-    margin-top: a.$space-12;
-    padding-block: a.$space-6;
-    color: a.$color-cream;
+    @include a.flex(row, center, space-between, 18px, wrap);
+    width: min(100%, a.$container);
+    margin: 0 auto;
+    min-height: 96px;
+    padding: 24px;
     background: a.$color-wine;
+    color: a.$color-cream;
 
     &__brand {
-        @include a.flex(row, center, flex-start, a.$space-2);
-        color: inherit;
+        @include a.flex(row, center, flex-start, 10px);
+        text-decoration: none;
         font-family: a.$font-heading;
         font-weight: 800;
-        text-decoration: none;
+        font-size: 18px;
     }
+    &__logo { width: 27px; height: 27px; filter: brightness(0) invert(1); }
+    &__tagline { display: none; }
+    &__copyright { color: rgb(243 232 223 / 80%); font-size: 13px; }
 
-    &__logo {
-        width: 26px;
-        height: 26px;
-        filter: brightness(0) invert(1);
-    }
-
-    &__tagline,
-    &__copyright {
-        color: rgb(243 232 223 / 78%);
-        font-size: 0.82rem;
-    }
-
-    @include a.tablet {
-        @include a.flex(row, center, space-between, a.$space-6);
-        padding-inline: a.$space-6;
-    }
-
-    @include a.desktop {
-        padding-inline: a.$space-10;
-    }
+    @include a.tablet { padding-inline: 48px; }
+    @include a.desktop { padding-inline: 72px; }
 }
