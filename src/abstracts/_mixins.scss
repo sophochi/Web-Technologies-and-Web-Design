@@ -1,0 +1,83 @@
+@use 'variables' as v;
+@use 'functions' as f;
+
+@mixin flex($direction: row, $align: center, $justify: flex-start, $gap: 0, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+    flex-wrap: $wrap;
+}
+
+@mixin container($max-width: v.$container, $padding: v.$space-4) {
+    width: min(100%, calc(#{$max-width} + (#{$padding} * 2)));
+    margin-inline: auto;
+    padding-inline: $padding;
+}
+
+@mixin type($family: v.$font-body, $size: 16px, $line-height: 1.5, $weight: 400, $letter-spacing: 0) {
+    font-family: $family;
+    font-size: f.rem($size);
+    font-weight: $weight;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin focus-ring {
+    outline: 3px solid rgb(244 154 177 / 45%);
+    outline-offset: 3px;
+}
+
+@mixin button-base {
+    @include flex(row, center, center, v.$space-2);
+    min-height: 44px;
+    padding: 10px 22px;
+    border: 1px solid transparent;
+    border-radius: v.$radius-button;
+    font: inherit;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform v.$transition-fast, background-color v.$transition-fast, color v.$transition-fast, border-color v.$transition-fast;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+        @include focus-ring;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+// Custom grid mixins required for the 12-point bonus.
+@mixin grid-container($max-width: v.$container, $padding: v.$space-4) {
+    @include container($max-width, $padding);
+}
+
+@mixin grid-row($columns: 4, $gutter: 16px, $row-gap: $gutter) {
+    display: grid;
+    grid-template-columns: repeat($columns, minmax(0, 1fr));
+    column-gap: $gutter;
+    row-gap: $row-gap;
+}
+
+@mixin grid-col($span: 1, $start: auto) {
+    @if $start == auto {
+        grid-column: span $span;
+    } @else {
+        grid-column: #{$start} / span $span;
+    }
+}

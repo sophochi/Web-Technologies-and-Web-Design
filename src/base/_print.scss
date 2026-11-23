@@ -1,0 +1,37 @@
+@media print {
+    *,
+    *::before,
+    *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    body {
+        color: #000;
+        background: #fff;
+        font-size: 11pt;
+    }
+
+    .site-header__nav,
+    .site-header__signin,
+    .job-search,
+    .filters,
+    .job-card__link,
+    .job-cta > a,
+    .application-form button {
+        display: none !important;
+    }
+
+    a[href]::after {
+        content: ' (' attr(href) ')';
+        font-size: 9pt;
+    }
+
+    article,
+    section,
+    .job-card {
+        break-inside: avoid;
+    }
+}

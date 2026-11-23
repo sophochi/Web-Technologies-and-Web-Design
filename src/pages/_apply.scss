@@ -1,0 +1,92 @@
+@use '../abstracts' as a;
+
+.apply-shell {
+    display: grid;
+    gap: a.$space-5;
+    padding-top: a.$space-6;
+}
+
+.apply-page {
+    display: grid;
+    gap: a.$space-5;
+    min-width: 0;
+
+    &__header {
+        display: grid;
+        gap: a.$space-3;
+        padding: a.$space-6;
+        color: a.$color-cream;
+        background: a.$color-wine;
+        border-radius: a.$radius-card;
+    }
+
+    &__header h1,
+    &__header > p {
+        color: inherit;
+    }
+
+    &__media img {
+        width: 100%;
+        max-height: 230px;
+        object-fit: cover;
+        border-radius: a.$radius-card;
+    }
+}
+
+.application {
+    display: grid;
+    gap: a.$space-5;
+    padding: a.$space-6;
+    background: a.$color-white;
+    border: 1px solid a.$color-border;
+    border-radius: a.$radius-card;
+
+    &__header {
+        display: grid;
+        gap: a.$space-2;
+    }
+
+    &__header p {
+        color: a.$color-graphite;
+    }
+}
+
+.application-summary {
+    display: grid;
+    gap: a.$space-3;
+    padding: a.$space-5;
+    background: a.tint(a.$color-cream, 30%);
+    border: 1px solid a.$color-border;
+    border-radius: a.$radius-card;
+
+    dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: a.$space-2 a.$space-4;
+    }
+
+    dt { color: a.$color-graphite; }
+
+    a {
+        width: max-content;
+        font-weight: 700;
+    }
+}
+
+@include a.desktop {
+    .apply-shell {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
+        align-items: start;
+    }
+
+    .apply-page {
+        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.55fr);
+        align-items: start;
+    }
+
+    .apply-page__header,
+    .application-summary {
+        position: sticky;
+        top: a.$space-6;
+    }
+}

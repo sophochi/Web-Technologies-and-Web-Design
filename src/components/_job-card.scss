@@ -1,0 +1,93 @@
+@use '../abstracts' as a;
+
+.job-card {
+    position: relative;
+    display: grid;
+    gap: a.$space-2;
+    height: 100%;
+    padding: a.$space-5;
+    overflow: hidden;
+    color: a.$color-wine;
+    background: a.$color-white;
+    border: 1px solid a.$color-border;
+    border-radius: a.$radius-card;
+    box-shadow: a.$shadow-card;
+    transition: transform a.$transition-base, box-shadow a.$transition-base, border-color a.$transition-base;
+
+    &::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 7px;
+        content: '';
+        background: a.$color-blush;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 32px rgb(69 40 41 / 12%);
+    }
+
+    &--featured::before {
+        background: a.$color-pink;
+    }
+
+    &--featured {
+        border-color: a.tint(a.$color-pink, 35%);
+        background: linear-gradient(135deg, a.$color-white 0%, a.tint(a.$color-pink, 88%) 100%);
+    }
+
+    &__header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: a.$space-1 a.$space-2;
+        align-items: start;
+    }
+
+    &__company {
+        color: a.$color-graphite;
+        font-size: 0.78rem;
+    }
+
+    &__badge {
+        padding: 4px 9px;
+        color: a.$color-wine;
+        background: a.$color-pink;
+        border-radius: a.$radius-button;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    &__title {
+        grid-column: 1 / -1;
+    }
+
+    &__meta,
+    &__location,
+    &__salary {
+        font-size: 0.9rem;
+    }
+
+    &__salary {
+        font-weight: 700;
+    }
+
+    &__tags {
+        @include a.flex(row, center, flex-start, a.$space-2, wrap);
+        list-style: none;
+    }
+
+    &__tag {
+        padding: 5px 10px;
+        background: a.$color-cream;
+        border: 1px solid a.$color-border;
+        border-radius: a.$radius-button;
+        font-size: 0.76rem;
+    }
+
+    &__link {
+        justify-self: start;
+        margin-top: a.$space-1;
+    }
+}

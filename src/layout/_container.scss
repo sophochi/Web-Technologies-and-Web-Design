@@ -1,0 +1,26 @@
+@use '../abstracts' as a;
+
+.home-page,
+.jobs-page,
+.job-details-shell,
+.apply-shell {
+    @include a.container;
+}
+
+@include a.tablet {
+    .home-page,
+    .jobs-page,
+    .job-details-shell,
+    .apply-shell {
+        padding-inline: a.$space-6;
+    }
+}
+
+@include a.desktop {
+    .home-page,
+    .jobs-page,
+    .job-details-shell,
+    .apply-shell {
+        padding-inline: a.$space-10;
+    }
+}

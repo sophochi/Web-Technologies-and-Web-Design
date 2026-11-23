@@ -1,0 +1,77 @@
+@use '../abstracts' as a;
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 14px;
+    color: a.$color-wine;
+    background: a.$color-white;
+    border: 1px solid a.$color-border;
+    border-radius: a.$radius-input;
+    transition: border-color a.$transition-fast, box-shadow a.$transition-fast;
+
+    &::placeholder {
+        color: a.$color-graphite;
+        opacity: 0.78;
+    }
+
+    &:focus {
+        border-color: a.$color-pink;
+        box-shadow: 0 0 0 3px rgb(244 154 177 / 18%);
+        outline: 0;
+    }
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+label,
+legend {
+    color: a.$color-wine;
+    font-weight: 650;
+}
+
+.job-search {
+    @include a.flex(column, stretch, flex-start, a.$space-3);
+    width: 100%;
+
+    &__field {
+        @include a.flex(column, stretch, flex-start, a.$space-1);
+    }
+
+    label {
+        font-size: 0.82rem;
+    }
+
+    @include a.tablet {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) auto;
+        align-items: end;
+    }
+}
+
+.application-form {
+    display: grid;
+    gap: a.$space-4;
+
+    &__field {
+        @include a.flex(column, stretch, flex-start, a.$space-2);
+    }
+
+    @include a.tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        &__field:nth-child(n + 3) {
+            grid-column: 1 / -1;
+        }
+
+        button {
+            grid-column: 1 / -1;
+            justify-self: end;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+@use '../abstracts' as a;
+
+:root {
+    color-scheme: light;
+    accent-color: a.$color-pink;
+}

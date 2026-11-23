@@ -1,0 +1,26 @@
+@use '../abstracts' as a;
+
+html {
+    min-width: 320px;
+    background: a.$color-cream;
+}
+
+body {
+    min-height: 100vh;
+    color: a.$color-wine;
+    background: a.$color-cream;
+    @include a.type(a.$font-body, 16px, 1.5, 400);
+}
+
+a {
+    color: inherit;
+}
+
+main {
+    display: block;
+}
+
+::selection {
+    color: a.$color-wine;
+    background: a.$color-pink;
+}

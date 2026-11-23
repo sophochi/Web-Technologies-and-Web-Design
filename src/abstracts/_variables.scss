@@ -1,0 +1,41 @@
+// Design tokens from the Figma Style Guide.
+$color-wine: #452829;
+$color-graphite: #57595b;
+$color-blush: #e8d1c5;
+$color-cream: #f3e8df;
+$color-pink: #f49ab1;
+$color-orange: #f2a65a;
+$color-white: #fffdfb;
+$color-black: #241718;
+$color-border: #e5d3c9;
+$color-error: #b93838;
+
+$font-heading: 'Fraunces', Georgia, serif;
+$font-body: 'Instrument Sans', Arial, sans-serif;
+
+$radius-input: 12px;
+$radius-card: 18px;
+$radius-button: 999px;
+$radius-hero: 24px;
+
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+$space-18: 72px;
+
+$container: 1200px;
+$mobile-min: 360px;
+$mobile-max: 390px;
+$tablet: 768px;
+$desktop: 1280px;
+
+$shadow-card: 0 8px 24px rgb(69 40 41 / 8%);
+$transition-fast: 180ms ease;
+$transition-base: 260ms ease;

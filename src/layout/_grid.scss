@@ -1,0 +1,23 @@
+@use '../abstracts' as a;
+
+.l-container {
+    @include a.grid-container;
+}
+
+.l-row {
+    @include a.grid-row(4, 16px);
+
+    @include a.tablet {
+        @include a.grid-row(8, 16px);
+    }
+
+    @include a.desktop {
+        @include a.grid-row(12, 24px);
+    }
+}
+
+@for $i from 1 through 12 {
+    .l-col-#{$i} {
+        @include a.grid-col($i);
+    }
+}

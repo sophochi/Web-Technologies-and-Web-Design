@@ -1,0 +1,18 @@
+@use 'sass:color';
+@use 'sass:math';
+
+@function rem($px, $base: 16) {
+    @return math.div($px, $base) * 1rem;
+}
+
+@function mix-colors($first, $second, $weight: 50%) {
+    @return color.mix($first, $second, $weight);
+}
+
+@function tint($value, $amount: 15%) {
+    @return color.mix(white, $value, $amount);
+}
+
+@function shade($value, $amount: 15%) {
+    @return color.mix(black, $value, $amount);
+}

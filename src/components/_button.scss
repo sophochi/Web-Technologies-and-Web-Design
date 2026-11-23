@@ -1,0 +1,44 @@
+@use '../abstracts' as a;
+
+.site-header__signin,
+.job-search button,
+.filters > button,
+.job-card__link,
+.job-cta > a,
+.application-form button,
+.role-browser a {
+    @include a.button-base;
+}
+
+.site-header__signin,
+.job-cta > a,
+.application-form button {
+    color: a.$color-cream;
+    background: a.$color-wine;
+}
+
+.job-search button,
+.filters > button {
+    color: a.$color-wine;
+    background: a.$color-pink;
+}
+
+.job-card__link,
+.role-browser a {
+    min-height: 34px;
+    padding: 7px 12px;
+    color: a.$color-wine;
+    background: a.$color-cream;
+    border-color: a.$color-border;
+}
+
+.site-header__signin:hover,
+.job-cta > a:hover,
+.application-form button:hover {
+    background: a.tint(a.$color-wine, 8%);
+}
+
+.job-search button:hover,
+.filters > button:hover {
+    background: a.tint(a.$color-pink, 10%);
+}

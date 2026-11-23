@@ -1,0 +1,117 @@
+@use '../abstracts' as a;
+
+.job-details-shell {
+    display: grid;
+    gap: a.$space-5;
+    padding-top: a.$space-6;
+}
+
+.job-details-page {
+    min-width: 0;
+}
+
+.job-details {
+    @include a.grid-row(4, 16px, a.$space-5);
+
+    &__header,
+    &__section,
+    &__salary {
+        @include a.grid-col(4);
+    }
+
+    &__header {
+        display: grid;
+        gap: a.$space-4;
+        padding: a.$space-6;
+        background: a.$color-blush;
+        border-radius: a.$radius-card;
+    }
+
+    &__company {
+        color: a.$color-graphite;
+        font-size: 0.86rem;
+    }
+
+    &__media img {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: a.$radius-card;
+    }
+
+    &__section {
+        display: grid;
+        gap: a.$space-3;
+        padding: a.$space-6;
+        background: a.$color-white;
+        border: 1px solid a.$color-border;
+        border-radius: a.$radius-card;
+    }
+
+    &__section > ul:not(.job-details__skills) {
+        display: grid;
+        gap: a.$space-2;
+        padding-left: 1.1rem;
+    }
+
+    @include a.tablet {
+        @include a.grid-row(8, 16px, a.$space-5);
+        &__header,
+        &__section,
+        &__salary { @include a.grid-col(8); }
+    }
+
+    @include a.desktop {
+        @include a.grid-row(8, 24px, a.$space-5);
+        &__header,
+        &__section,
+        &__salary { @include a.grid-col(8); }
+    }
+}
+
+.job-cta {
+    display: grid;
+    gap: a.$space-4;
+    padding: a.$space-6;
+    color: a.$color-cream;
+    background: a.$color-wine;
+    border-radius: a.$radius-card;
+
+    h2,
+    h3,
+    dt,
+    dd {
+        color: inherit;
+    }
+
+    dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: a.$space-2 a.$space-4;
+    }
+
+    dt { opacity: 0.72; }
+
+    &__reasons {
+        display: grid;
+        gap: a.$space-3;
+        padding-top: a.$space-2;
+        border-top: 1px solid rgb(243 232 223 / 22%);
+    }
+
+    &__reasons li {
+        color: a.$color-wine;
+    }
+}
+
+@include a.desktop {
+    .job-details-shell {
+        grid-template-columns: minmax(0, 2fr) minmax(280px, 0.8fr);
+        align-items: start;
+    }
+
+    .job-cta {
+        position: sticky;
+        top: a.$space-6;
+    }
+}

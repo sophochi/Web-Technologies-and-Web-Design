@@ -1,0 +1,45 @@
+@use '../abstracts' as a;
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero,
+.jobs-hero,
+.job-details__header,
+.apply-page__header {
+    animation: fade 420ms ease both;
+}
+
+.job-card,
+.job-details__section,
+.application {
+    animation: slide 460ms ease both;
+}
+
+.role-browser__list a,
+.application-summary {
+    animation: appear 420ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
